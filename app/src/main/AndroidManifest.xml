@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.seniortest.activity.seniorproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="AUL Announcement"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_second"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ThirdActivity"
+            android:label="Please Choose"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StudentLoginActivity"
+            android:label="Student Login" />
+        <activity
+            android:name=".TeacherLoginActivity"
+            android:label="Teacher Login" />
+        <activity
+            android:name=".StudentSignUpActivity"
+            android:label="Sign Up" />
+        <activity
+            android:name=".TeacherSignUpActivity"
+            android:label="Sign Up" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="Reset Password" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="Send Notification" />
+        <activity
+            android:name=".StudentNavActivity"
+            android:label="Student Home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StudentSearchActivity"
+            android:label="@string/title_activity_student_search"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".TeacherNavActivity"
+            android:label="Teacher Home"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SupportsActivity"
+            android:label="Support Page" />
+        <activity
+            android:name=".AssignmentCreationActivity"
+            android:label="Create Assignment" />
+        <activity
+            android:name=".StudentAssignmentsActivity"
+            android:label="List Of Assignment" />
+        <activity
+            android:name=".DetailAssignmentActivity"
+            android:label="Details Of Assignment"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AdminActivity"
+            android:label="Admin Page" />
+        <activity
+            android:name=".AdminClassActivity"
+            android:label="List Of Classes" />
+        <activity
+            android:name=".AdminStudentActivity"
+            android:label="List Of Student" />
+        <activity
+            android:name=".AdminAssignmentActivity"
+            android:label="List Of Assignments" />
+        <activity
+            android:name=".AdminTeacherActivity"
+            android:label="List Of Teachers" />
+        <activity
+            android:name=".AdminStudentClassActivity"
+            android:label="Student&apos;s Class" />
+        <activity android:name=".UpdateProfileActivity"></activity>
+    </application>
+
+</manifest>

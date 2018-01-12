@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:senior="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+    <!-- only one item can be checked -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homebutton"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/assignment"
+            android:icon="@drawable/student_ic_menu_manage"
+            android:title="Create Assignment" />
+
+
+    </group>
+
+    <item android:title=""
+        >
+        <menu>
+            <item
+                android:id="@+id/update_profiles"
+                android:icon="@drawable/ic_mode_edit_black_24dp"
+                android:title="Update Profile"/>
+            <item
+                android:id="@+id/teach_nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/support"
+                android:icon="@drawable/ic_feedback_black_24dp"
+                android:title="Support" />
+            <item
+                android:id="@+id/teach_nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Log Out" />
+        </menu>
+    </item>
+
+</menu>

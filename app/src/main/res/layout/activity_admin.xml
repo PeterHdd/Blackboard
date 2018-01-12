@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"> <!-- fills the whole view -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.seniortest.activity.seniorproject.AdminActivity"
+    android:background="@color/statusbar" >
+
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Log out"
+    android:id="@+id/logoutad"
+    android:textAllCaps="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="ADMIN PAGE"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="77dp"
+        android:id="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Classes"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@null"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:id="@+id/delclass"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="45dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Students"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@null"
+        android:layout_height="wrap_content"
+        android:id="@+id/delstudent"
+        android:layout_alignBaseline="@+id/delclass"
+        android:layout_alignBottom="@+id/delclass"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Teachers"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@null"
+        android:layout_height="wrap_content"
+        android:id="@+id/delteacher"
+        android:layout_marginBottom="17dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+</ScrollView>

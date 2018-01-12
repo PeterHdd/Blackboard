@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.seniortest.activity.seniorproject.DetailAssignmentActivity">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Your Assignment"
+        android:layout_marginTop="58dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:id="@+id/assigns"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp" />
+    <TextView
+        android:id="@+id/subjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject:"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:layout_marginTop="55dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/assigns"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="template"
+        android:textSize="20dp"
+        android:id="@+id/titleofassign"
+        android:textColor="@color/primary_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignTop="@+id/subjects"
+        android:layout_toRightOf="@+id/subjects"
+        android:layout_toEndOf="@+id/subjects"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp" />
+    <TextView
+        android:id="@+id/assigntodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assignment:"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/subjects"
+        android:layout_marginTop="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:id="@+id/bodyofassign"
+        android:textColor="@color/primary_text"
+        android:text="test"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/assigntodo"
+        android:maxLines="7"
+        android:lines="7"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:id="@+id/shares"
+        android:background="@color/lightblue"
+        android:text="Share"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:layout_alignTop="@+id/bodyofassign"
+        android:layout_toRightOf="@+id/subjects"
+        android:layout_toEndOf="@+id/subjects" />
+
+</RelativeLayout>
+</ScrollView>
