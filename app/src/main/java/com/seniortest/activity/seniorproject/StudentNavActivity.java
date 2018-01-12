@@ -1,5 +1,6 @@
 package com.seniortest.activity.seniorproject;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -56,7 +57,7 @@ public class StudentNavActivity extends AppCompatActivity{
     private String retclass;
     ArrayList alists;
     private ListView views1;
-    private String values,s;
+    private String values,s,dataTitle,datamessage;
 
 
 
@@ -89,6 +90,17 @@ public class StudentNavActivity extends AppCompatActivity{
         nav = (NavigationView) findViewById(R.id.nav_view); //declare nav bar in java code, created in xml
         image = (CircleImageView) nav.getHeaderView(0).findViewById(R.id.imgnav);
         name1 = (TextView) nav.getHeaderView(0).findViewById(R.id.name);
+        if (getIntent().getExtras() != null) {
+            dataTitle = getIntent().getExtras().getString("title");
+            datamessage = getIntent().getExtras().getString("message");
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Message");
+            builder.setMessage("title: " + dataTitle + "\n" + "message: " + datamessage);
+            builder.setPositiveButton("OK", null);
+            builder.show();
+
+        }
+
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -277,6 +289,9 @@ public class StudentNavActivity extends AppCompatActivity{
                 if(returndata.size()==0){
                     hides.setVisibility(View.VISIBLE);
                 }
+                else{
+                    hides.setVisibility(View.GONE);
+                }
 
                 //Alphabetic sorting.
                 Collections.sort(returndata);
@@ -349,71 +364,57 @@ public class StudentNavActivity extends AppCompatActivity{
         alists.clear();
         returndata.clear();
         DatabaseReference newtables = FirebaseDatabase.getInstance().getReference().child("ClassStudent");
-        newtables.orderByChild("studentid").equalTo(currentuser.getUid()).addChildEventListener(new ChildEventListener() {
+        newtables.orderByChild("studentid").equalTo(currentuser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    values=dataSnapshot.child("classid").getValue().toString();
-                    Log.i("values",values);
-
-                DatabaseReference classjoin=FirebaseDatabase.getInstance().getReference().child("Class");
-                if(values!=null)
-                    classjoin.orderByKey().equalTo(values).addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            retclass = dataSnapshot.child("Classname").getValue().toString();
-                            alists.add(retclass);
-                            HashSet<String> hashSet = new HashSet<String>();
-                            hashSet.addAll(alists);
-                            alists.clear();
-                            alists.addAll(hashSet);
-                            if(alists.size()==0){
-                                hides.setVisibility(View.VISIBLE);
-                            }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        values = data.child("classid").getValue().toString();
 
 
-                            adapter = new ArrayAdapter(StudentNavActivity.this, android.R.layout.simple_list_item_single_choice, alists);
+                        DatabaseReference classjoin = FirebaseDatabase.getInstance().getReference().child("Class");
+                        if (values != null)
+                            classjoin.orderByKey().equalTo(values).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    retclass = dataSnapshot.child("Classname").getValue().toString();
+                                    alists.add(retclass);
+                                    HashSet<String> hashSet = new HashSet<String>();
+                                    hashSet.addAll(alists);
+                                    alists.clear();
+                                    alists.addAll(hashSet);
 
-                            views1.setAdapter(adapter);
+                                    adapter = new ArrayAdapter(StudentNavActivity.this, android.R.layout.simple_list_item_single_choice, alists);
 
-                        }
+                                    views1.setAdapter(adapter);
 
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                                }
 
-                        }
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+                                }
 
-                        }
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                                }
 
-                        }
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                                }
 
-                        }
-                    });
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
-            }
+                                }
+                            });
+                    }
 
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                } else {
+                    hides.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

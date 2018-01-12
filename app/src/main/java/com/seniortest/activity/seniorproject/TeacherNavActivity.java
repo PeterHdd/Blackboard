@@ -300,9 +300,13 @@ public class TeacherNavActivity extends AppCompatActivity{
                                         hashSet.addAll(editlists);
                                         editlists.clear();
                                         editlists.addAll(hashSet);
-                                        if(editlists.size()==0){
+                                        if(editlists.isEmpty()){
                                             infoimage.setVisibility(View.VISIBLE);
                                             infowarn.setVisibility(View.VISIBLE);
+                                        }
+                                        else{
+                                            infoimage.setVisibility(View.GONE);
+                                            infowarn.setVisibility(View.GONE);
                                         }
 
                                         //Alphabetic sorting.
@@ -352,52 +356,40 @@ public class TeacherNavActivity extends AppCompatActivity{
         alist=new ArrayList<>();
         //to clear the data when onresume is called
         addclass=FirebaseDatabase.getInstance().getReference().child("Class");
-             addclass.orderByChild("teachid").equalTo(user.getUid()).addChildEventListener(new ChildEventListener() {
+             addclass.orderByChild("teachid").equalTo(user.getUid()).addValueEventListener(new ValueEventListener() {
                  @Override
-                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                 public void onDataChange(DataSnapshot dataSnapshot) {
+                     if(dataSnapshot.exists()) {
+                         for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                         String inputs = dataSnapshot1.child("Classname").getValue().toString();
+                         alist.add(inputs);
+                         HashSet<String> hashSet = new HashSet<String>();
+                         hashSet.addAll(alist);
+                         alist.clear();
+                         alist.addAll(hashSet);
 
-                   String inputs= dataSnapshot.child("Classname").getValue().toString();
-                     alist.add(inputs);
-                     HashSet<String> hashSet = new HashSet<String>();
-                     hashSet.addAll(alist);
-                     alist.clear();
-                     alist.addAll(hashSet);
-                     if(alist.size()==0){
+                         //Alphabetic sorting.
+                         Collections.sort(editlists);
+                         adapter = new ArrayAdapter<>(TeacherNavActivity.this, android.R.layout.simple_list_item_1, alist);
+
+                         list.setAdapter(adapter);
+                         adapter.notifyDataSetChanged();
+                     }}
+                     else{
                          infoimage.setVisibility(View.VISIBLE);
                          infowarn.setVisibility(View.VISIBLE);
                      }
 
-                     //Alphabetic sorting.
-                     Collections.sort(editlists);
-                    adapter= new ArrayAdapter<>(TeacherNavActivity.this, android.R.layout.simple_list_item_1, alist);
-
-                     list.setAdapter(adapter);
-                     adapter.notifyDataSetChanged();
-
 
                  }
 
 
-
-                 @Override
-                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                 }
-
-                 @Override
-                 public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                 }
-
-                 @Override
-                 public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                 }
 
                  @Override
                  public void onCancelled(DatabaseError databaseError) {
 
                  }
              });
+
      }
 }

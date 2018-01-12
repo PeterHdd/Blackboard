@@ -22,17 +22,16 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/hide"
-        android:padding="3dp"
-        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/joinbtn"
         android:visibility="gone"
+        android:layout_alignRight="@+id/joinbtn"
+        android:layout_below="@+id/joinbtn"
+        android:layout_marginTop="94dp"
         android:text="You have not joined any Class"
-        android:layout_marginBottom="120dp"
-        android:layout_alignBottom="@+id/listView2"
-        android:layout_alignLeft="@+id/joinbtn"
-        android:layout_alignStart="@+id/joinbtn" />
+        android:textSize="20dp" />
 
 
     <ListView

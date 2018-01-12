@@ -102,6 +102,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(String dataTitle, String dataMessage,String datateach) {
         Intent intent = new Intent(this, SplashActivity.class); //activity to go after clicking it
+        intent.putExtra("title", dataTitle);
+        intent.putExtra("message", dataMessage);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT); //pending intent wraps another intent object,
@@ -119,7 +121,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentText(dataMessage)
                 .setStyle(bigStyle)
                 .setTicker("You have received new notification from AUL Announcement")
-                .setSound(defaultSoundUri);
+                .setSound(defaultSoundUri)
+                .setAutoCancel(true);
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         notificationBuilder.setLargeIcon(largeIcon);
         Log.d(TAG, "Message data payload: " + dataTitle);
