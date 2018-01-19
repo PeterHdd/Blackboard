@@ -9,6 +9,11 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
 
+        <item
+            android:id="@+id/recievepdf"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Recieved PDF" />
+
 
     </group>
 

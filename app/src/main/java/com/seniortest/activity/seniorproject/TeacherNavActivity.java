@@ -2,6 +2,7 @@ package com.seniortest.activity.seniorproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -95,6 +96,12 @@ public class TeacherNavActivity extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+
+                if(id==R.id.pdf){
+                    Intent i=new Intent(TeacherNavActivity.this, UploadPDFActivity.class);
+                    startActivity(i);
+                    finish();
+                }
 
                 if (id == R.id.update_profiles) {
                     Intent i=new Intent(TeacherNavActivity.this,UpdateProfileActivity.class);

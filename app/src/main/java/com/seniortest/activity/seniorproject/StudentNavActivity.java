@@ -106,6 +106,12 @@ public class StudentNavActivity extends AppCompatActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
+                if(id==R.id.recievepdf){
+                    Intent i=new Intent(StudentNavActivity.this,StudentPDFActivity.class);
+                    startActivity(i);
+
+                }
+
                 if (id == R.id.update_profile) {
                     Intent i=new Intent(StudentNavActivity.this,UpdateProfileActivity.class);
                     startActivity(i);

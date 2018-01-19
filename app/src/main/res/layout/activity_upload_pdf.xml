@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UploadPDFActivity">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Select Class: "
+            android:id="@+id/txtclass"
+            android:layout_marginTop="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <Spinner
+            android:id="@+id/selectspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/txtclass"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_toEndOf="@+id/uplpdf"
+            android:layout_toRightOf="@+id/uplpdf"
+            android:background="@android:drawable/btn_dropdown"
+            android:popupBackground="@color/grey"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/textViewtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title : "
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/txtclass"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/orignaltitle"
+            android:layout_marginTop="60dp"
+            android:layout_below="@+id/selectspinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+        </EditText>
+        <requestFocus/>
+
+        <Button
+            android:id="@+id/uplpdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/orignaltitle"
+            android:background="@color/lightblue"
+            android:text="PDF : "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+        <!-- makes the size large -->
+
+        <TextView
+            android:id="@+id/pdftext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/orignaltitle"
+            android:inputType="textMultiLine"
+            android:lines="7"
+            android:maxLines="7"/>
+
+        <Button
+            android:id="@+id/savebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pdftext"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/selectspinner"
+            android:layout_toRightOf="@+id/selectspinner"
+            android:background="@color/lightblue"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/txtclass"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/txtclass"
+            android:background="@color/lightblue"
+            android:text="Cancel"
+            android:id="@+id/cancels"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</ScrollView>

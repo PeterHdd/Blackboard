@@ -13,6 +13,11 @@
             android:id="@+id/assignment"
             android:icon="@drawable/student_ic_menu_manage"
             android:title="Create Assignment" />
+        <item
+            android:id="@+id/pdf"
+            android:icon="@drawable/student_ic_menu_manage"
+            android:title="Upload PDF" />
+
 
 
     </group>
