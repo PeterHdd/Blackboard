@@ -2,6 +2,7 @@ package com.seniortest.activity.seniorproject;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -43,6 +44,7 @@ public class UploadPDFActivity extends AppCompatActivity {
     private StorageReference mStorage;
     private EditText txts;
     private Button cancels;
+    private FloatingActionButton floatingActionButto;
 
 
     @Override
@@ -52,6 +54,7 @@ public class UploadPDFActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         spinner=(Spinner)findViewById(R.id.selectspinner);
+        floatingActionButto=(FloatingActionButton)findViewById(R.id.floatingActionButton);
         btn=(Button)findViewById(R.id.uplpdf);
         txt=(TextView)findViewById(R.id.pdftext);
         btns=(Button)findViewById(R.id.savebtn);
@@ -78,6 +81,14 @@ public class UploadPDFActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        floatingActionButto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(UploadPDFActivity.this,TeacherListPDFActivity.class);
+                startActivity(i);
             }
         });
 
@@ -166,7 +177,7 @@ public class UploadPDFActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==request_code&&resultCode==RESULT_OK){ //checks if the requestcode is same as request_code to know how to respond
 
-            uri=data.getData();  //data.getData() is used to get the uri that was selected
+            uri=data.getData();  //data.getData() is used to get the uri that was selected, uri here will contain the data the we got from gallery
             txt.setText(""+uri); //and here we set the uri to the text
     }
 }

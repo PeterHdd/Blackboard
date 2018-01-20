@@ -114,7 +114,10 @@
         <activity
             android:name=".StudentDetailPDFActivity"
             android:label="Student PDF" />
-        <activity android:name=".AdminPDFActivity"></activity>
+        <activity android:name=".AdminPDFActivity"
+            android:label="List of PDF"/>
+        <activity android:name=".TeacherListPDFActivity"
+            android:label="Your PDF Files"/>
     </application>
 
 </manifest>

@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,13 +23,14 @@ import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
-public class StudentDetailPDFActivity extends AppCompatActivity {
+public class TeacherListPDFActivity extends AppCompatActivity {
 
     private DatabaseReference db;
     private ListView lists;
     private ArrayList<String> stringslists;
-    private String classesnames,text,pdf,s;
+    private String text,pdf,s;
     private ArrayAdapter adapter;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +40,25 @@ public class StudentDetailPDFActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         lists=(ListView)findViewById(R.id.detailpdf);
         stringslists=new ArrayList<>();
+        user= FirebaseAuth.getInstance().getCurrentUser();
 
-        classesnames=getIntent().getStringExtra("classnm");
         db= FirebaseDatabase.getInstance().getReference().child("PDF");
-        db.orderByChild("cname").equalTo(classesnames).addListenerForSingleValueEvent(new ValueEventListener() {
+        db.orderByChild("teacherid").equalTo(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot data: dataSnapshot.getChildren()){
-                         pdf=data.child("PDFurl").getValue().toString();
+                        pdf=data.child("PDFurl").getValue().toString();
                         s=data.child("Ptitle").getValue().toString();
                         stringslists.add(s);
 
-                        adapter = new ArrayAdapter(StudentDetailPDFActivity.this, android.R.layout.simple_list_item_1, stringslists);
+                        adapter = new ArrayAdapter(TeacherListPDFActivity.this, android.R.layout.simple_list_item_1, stringslists);
                         lists.setAdapter(adapter);
 
                     }
                 }
                 else{
-                    Toasty.info(StudentDetailPDFActivity.this,"No pdf files exists", Toast.LENGTH_LONG).show();
+                    Toasty.info(TeacherListPDFActivity.this,"No pdf files exists", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -70,21 +73,21 @@ public class StudentDetailPDFActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final String selectedFromList = (String)lists.getItemAtPosition(i);
-               db.orderByChild("Ptitle").equalTo(selectedFromList).addListenerForSingleValueEvent(new ValueEventListener() {
-                   @Override
-                   public void onDataChange(DataSnapshot dataSnapshot) {
-                       for(DataSnapshot data: dataSnapshot.getChildren()){
-                          String pdfs=data.child("PDFurl").getValue().toString();
-                           startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(pdfs))); //it will let you download/ view and create a new uri object that references a location in another app
+                db.orderByChild("Ptitle").equalTo(selectedFromList).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot data: dataSnapshot.getChildren()){
+                            String pdfs=data.child("PDFurl").getValue().toString();
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(pdfs))); //it will let you download/ view and create a new uri object that references a location in another app
 
-                       }
-                   }
+                        }
+                    }
 
-                   @Override
-                   public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                   }
-               });
+                    }
+                });
 
 
 

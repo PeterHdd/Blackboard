@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -55,7 +56,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/orignaltitle"
             android:background="@color/lightblue"
-            android:text="PDF : "
+            android:text="UPLOAD PDF : "
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white" />
         <!-- makes the size large -->
@@ -93,6 +94,20 @@
         android:background="@color/lightblue"
         android:text="Cancel"
         android:textColor="@color/white" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/savebtn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:clickable="true"
+            app:srcCompat="?android:attr/actionModePasteDrawable" />
+
 
     </RelativeLayout>
 </ScrollView>
