@@ -11,7 +11,7 @@
 
         <item
             android:id="@+id/recievepdf"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_inbox_black_24dp"
             android:title="Recieved PDF" />
 
 

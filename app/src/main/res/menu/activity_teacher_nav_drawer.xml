@@ -15,7 +15,7 @@
             android:title="Create Assignment" />
         <item
             android:id="@+id/pdf"
-            android:icon="@drawable/student_ic_menu_manage"
+            android:icon="@drawable/ic_note_black_24dp"
             android:title="Upload PDF" />
 
 

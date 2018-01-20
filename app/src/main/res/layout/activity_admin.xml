@@ -61,15 +61,31 @@
         android:layout_marginEnd="50dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:text="Teachers"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:background="@null"
-        android:layout_height="wrap_content"
         android:id="@+id/delteacher"
-        android:layout_marginBottom="17dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/delstudent"
+        android:layout_alignStart="@+id/delstudent"
+        android:layout_below="@+id/delstudent"
+        android:layout_marginTop="19dp"
+        android:background="@null"
+        android:text="Teachers"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/delpdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/delteacher"
+        android:layout_alignBottom="@+id/delteacher"
+        android:layout_alignLeft="@+id/delclass"
+        android:layout_alignStart="@+id/delclass"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@null"
+        android:text="PDF"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
 </RelativeLayout>
 </ScrollView>

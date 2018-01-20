@@ -13,11 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -30,6 +33,7 @@ public class AdminStudentActivity extends AppCompatActivity {
     private ArrayList<String> listdelstudent;
     private ArrayAdapter adapter;
     private String s;
+    private StorageReference refers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class AdminStudentActivity extends AppCompatActivity {
         deletestudent=(ListView)findViewById(R.id.deletestudents);
         deletestudent.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listdelstudent = new ArrayList<String>();
+        refers= FirebaseStorage.getInstance().getReference();
        delstudent.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,6 +109,14 @@ public class AdminStudentActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for(DataSnapshot data: dataSnapshot.getChildren()) {
+                                    String image=data.child("image").getValue().toString();
+                                    refers= FirebaseStorage.getInstance().getReferenceFromUrl(image);
+                                    refers.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            // File deleted successfully
+                                        }
+                                    });
                                     data.getRef().removeValue();
                                     adapter.remove(s);
                                     adapter.notifyDataSetChanged();

@@ -102,14 +102,19 @@
         <activity
             android:name=".AdminStudentClassActivity"
             android:label="Student&apos;s Class" />
-        <activity android:name=".UpdateProfileActivity"
-            android:label="Update Profile"/>
-        <activity android:name=".UploadPDFActivity"
-            android:label="Upload PDF"/>
-        <activity android:name=".StudentPDFActivity"
-            android:label="Registered Classes"/>
-        <activity android:name=".StudentDetailPDFActivity"
-            android:label="Student PDF"></activity>
+        <activity
+            android:name=".UpdateProfileActivity"
+            android:label="Update Profile" />
+        <activity
+            android:name=".UploadPDFActivity"
+            android:label="Upload PDF" />
+        <activity
+            android:name=".StudentPDFActivity"
+            android:label="Registered Classes" />
+        <activity
+            android:name=".StudentDetailPDFActivity"
+            android:label="Student PDF" />
+        <activity android:name=".AdminPDFActivity"></activity>
     </application>
 
 </manifest>

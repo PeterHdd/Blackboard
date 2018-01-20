@@ -139,6 +139,9 @@ public class UploadPDFActivity extends AppCompatActivity {
                                     db.child("cname").setValue(spinners);
                                     db.child("teacherid").setValue(user.getUid());
                                     db.child("Ptitle").setValue(s);
+                                    Toasty.success(UploadPDFActivity.this,"PDF sent to students", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(UploadPDFActivity.this,TeacherNavActivity.class));
+                                    finish();
 
                                 }
                             });
@@ -152,9 +155,7 @@ public class UploadPDFActivity extends AppCompatActivity {
                     }
                 });
 
-                Toasty.success(UploadPDFActivity.this,"PDF sent to students", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(UploadPDFActivity.this,TeacherNavActivity.class));
-                finish();
+
 
             }
         });
@@ -166,7 +167,7 @@ public class UploadPDFActivity extends AppCompatActivity {
         if(requestCode==request_code&&resultCode==RESULT_OK){ //checks if the requestcode is same as request_code to know how to respond
 
             uri=data.getData();  //data.getData() is used to get the uri that was selected
-            txt.setText(""+uri); //and here we set the uri to the imageview, so we have a picture in the uri
+            txt.setText(""+uri); //and here we set the uri to the text
     }
 }
     @Override

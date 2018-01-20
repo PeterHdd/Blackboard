@@ -26,7 +26,7 @@ public class StudentDetailPDFActivity extends AppCompatActivity {
     private DatabaseReference db;
     private ListView lists;
     private ArrayList<String> stringslists;
-    private String classesnames,text;
+    private String classesnames,text,pdf,s;
     private ArrayAdapter adapter;
 
     @Override
@@ -45,20 +45,13 @@ public class StudentDetailPDFActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot data: dataSnapshot.getChildren()){
-                        final String pdf=data.child("PDFurl").getValue().toString();
-                        String s=data.child("Ptitle").getValue().toString();
+                         pdf=data.child("PDFurl").getValue().toString();
+                        s=data.child("Ptitle").getValue().toString();
                         stringslists.add(s);
 
                         adapter = new ArrayAdapter(StudentDetailPDFActivity.this, android.R.layout.simple_list_item_1, stringslists);
                         lists.setAdapter(adapter);
-                        lists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                final String selectedFromList = (String)lists.getItemAtPosition(i);
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(pdf)));
 
-                            }
-                        });
                     }
                 }
                 else{
@@ -73,7 +66,30 @@ public class StudentDetailPDFActivity extends AppCompatActivity {
         });
 
 
+        lists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final String selectedFromList = (String)lists.getItemAtPosition(i);
+               db.orderByChild("Ptitle").equalTo(selectedFromList).addListenerForSingleValueEvent(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(DataSnapshot dataSnapshot) {
+                       for(DataSnapshot data: dataSnapshot.getChildren()){
+                          String pdfs=data.child("PDFurl").getValue().toString();
+                           startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(pdfs)));
 
+                       }
+                   }
+
+                   @Override
+                   public void onCancelled(DatabaseError databaseError) {
+
+                   }
+               });
+
+
+
+            }
+        });
 
     }
 

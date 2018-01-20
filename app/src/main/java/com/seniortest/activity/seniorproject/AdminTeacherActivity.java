@@ -10,11 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,7 @@ public class AdminTeacherActivity extends AppCompatActivity {
     private ArrayList<String> listdelstudent;
     private ArrayAdapter adapter;
     private String s;
+    private StorageReference re;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,14 @@ public class AdminTeacherActivity extends AppCompatActivity {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if(dataSnapshot.exists()){
                                     for(DataSnapshot datas: dataSnapshot.getChildren()) {
+                                        String image=datas.child("image").getValue().toString();
+                                        re= FirebaseStorage.getInstance().getReferenceFromUrl(image);
+                                        re.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                // File deleted successfully
+                                            }
+                                        });
                                         String teachid=datas.getKey();
                                         datas.getRef().removeValue();
                                         adapter.remove(s);

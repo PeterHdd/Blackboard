@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity {
 
-   private  Button classes,student,teacher,logout;
+   private  Button classes,student,teacher,logout,delepdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class AdminActivity extends AppCompatActivity {
         student=(Button)findViewById(R.id.delstudent);
         logout=(Button)findViewById(R.id.logoutad);
       teacher=(Button)findViewById(R.id.delteacher);
+      delepdf=(Button)findViewById(R.id.delpdf);
 
       classes.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -54,6 +55,14 @@ public class AdminActivity extends AppCompatActivity {
               finish();
           }
       });
+      delepdf.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Intent intent=new Intent(AdminActivity.this,AdminPDFActivity.class);
+              startActivity(intent);
+          }
+      });
+
     }
 
 }

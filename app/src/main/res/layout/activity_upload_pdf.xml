@@ -71,32 +71,30 @@
             android:lines="7"
             android:maxLines="7"/>
 
-        <Button
-            android:id="@+id/savebtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/pdftext"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/selectspinner"
-            android:layout_toRightOf="@+id/selectspinner"
-            android:background="@color/lightblue"
-            android:text="Save"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
+    <Button
+        android:id="@+id/savebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/pdftext"
+        android:background="@color/lightblue"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/txtclass"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/txtclass"
-            android:background="@color/lightblue"
-            android:text="Cancel"
-            android:id="@+id/cancels"
-            android:textColor="@color/white" />
+    <Button
+        android:id="@+id/cancels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/savebtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:background="@color/lightblue"
+        android:text="Cancel"
+        android:textColor="@color/white" />
 
     </RelativeLayout>
-
 </ScrollView>
+
+
