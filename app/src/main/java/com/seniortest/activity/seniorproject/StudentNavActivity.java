@@ -90,7 +90,16 @@ public class StudentNavActivity extends AppCompatActivity{
         nav = (NavigationView) findViewById(R.id.nav_view); //declare nav bar in java code, created in xml
         image = (CircleImageView) nav.getHeaderView(0).findViewById(R.id.imgnav);
         name1 = (TextView) nav.getHeaderView(0).findViewById(R.id.name);
+        if (getIntent()!=null && getIntent().getExtras() != null) {
+                        dataTitle = getIntent().getExtras().getString("title");
+                        datamessage = getIntent().getExtras().getString("message");
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setTitle("Message");
+                        builder.setMessage("title: " + dataTitle + "\n" + "message: " + datamessage);
+                        builder.setPositiveButton("OK", null);
+                        builder.show();
 
+                   }
 
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -122,7 +122,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setStyle(bigStyle)
                 .setTicker("You have received new notification from AUL Announcement")
                 .setSound(defaultSoundUri)
-                .setAutoCancel(false);
+                .setAutoCancel(true);
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         notificationBuilder.setLargeIcon(largeIcon);
         Log.d(TAG, "Message data payload: " + dataTitle);
