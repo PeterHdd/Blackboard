@@ -72,20 +72,18 @@ public class TeacherNavActivity extends AppCompatActivity{
         infoimage=(ImageView)findViewById(R.id.infoimages);
         infowarn=(TextView)findViewById(R.id.textwarning);
 
-        //method to set toolbar as the actionbar
-
-
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);  //declare the drawerlayout in java code, it is created in xml
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         //ActionbarDrawerToggle it adds the hamburger icon in toolbar
+        //actionbartoggle takes the above parameters it is responsible for open/close nav bar
 
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        drawer.addDrawerListener(toggle); //to add it to the drawer layout
+        toggle.syncState(); //sync toggle with drawer layout
         nav = (NavigationView) findViewById(R.id.nav_view); //declare nav bar in java code, created in xml
-        image = (CircleImageView) nav.getHeaderView(0).findViewById(R.id.imgnav);
+        image = (CircleImageView) nav.getHeaderView(0).findViewById(R.id.imgnav); //use getheaderview since it is in the header of navbar
 
         list=(ListView)findViewById(R.id.listView);
          editlists = new ArrayList<>();
@@ -94,7 +92,7 @@ public class TeacherNavActivity extends AppCompatActivity{
         name1 = (TextView) nav.getHeaderView(0).findViewById(R.id.name);
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) { //used to check which item in nav bar is selected
                 int id = item.getItemId();
 
                 if(id==R.id.pdf){
@@ -234,7 +232,7 @@ public class TeacherNavActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) { //checks if drawer is open to close it in back pressed
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
@@ -243,14 +241,14 @@ public class TeacherNavActivity extends AppCompatActivity{
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {  //to add the menu
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.teacher_nav, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { //to check which menu item is selected
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
