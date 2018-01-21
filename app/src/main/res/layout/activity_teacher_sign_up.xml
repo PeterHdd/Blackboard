@@ -145,15 +145,7 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_reset_password"
-            android:layout_width="328dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="forgot password"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_text" />
+
 
 
     </LinearLayout>

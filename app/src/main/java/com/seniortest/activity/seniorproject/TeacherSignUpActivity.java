@@ -30,7 +30,7 @@ import es.dmoral.toasty.Toasty;
 public class TeacherSignUpActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword, date,inputname,phone,confpass;
-    private Button btnSignUp, btnResetPassword;
+    private Button btnSignUp;
     private FirebaseAuth auth;
     private DatabaseReference mDatabase, newStudent;
     private Uri uri;
@@ -56,7 +56,6 @@ public class TeacherSignUpActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         confpass=(EditText)findViewById(R.id.confpass);
-        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         date=(EditText)findViewById(R.id.date);
         inputname=(EditText)findViewById(R.id.name);
         phone=(EditText)findViewById(R.id.phone);
@@ -71,12 +70,7 @@ public class TeacherSignUpActivity extends AppCompatActivity {
             }
         });
 
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), ResetPasswordActivity.class));
-            }
-        });
+
 
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
