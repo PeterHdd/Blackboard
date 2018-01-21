@@ -39,12 +39,6 @@ public class SplashActivity extends AppCompatActivity {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists() && user != null) {
                                     Intent i = new Intent(SplashActivity.this, StudentNavActivity.class);
-                                    if (getIntent().getExtras() != null) {
-                                        dataTitle = getIntent().getExtras().getString("title");
-                                        i.putExtra("title", dataTitle);
-                                        dataMessage = getIntent().getExtras().getString("message");
-                                        i.putExtra("message", dataMessage);
-                                    }
                                     startActivity(i);
                                     finish();
                                 } else {

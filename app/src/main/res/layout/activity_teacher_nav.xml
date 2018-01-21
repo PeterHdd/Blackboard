@@ -23,3 +23,10 @@
         app:menu="@menu/activity_teacher_nav_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
+
+<!-- drawer layout used for nav bar -->
+
+<!-- this is the main activity-->
+<!-- it includes the menu item-->
+<!-- the header layout -->
+<!--the app_bar_teacher_nav, which contains the content_teacher_nav -->
