@@ -51,7 +51,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             datacoursename=remoteMessage.getData().get("coursename");
             databody=remoteMessage.getData().get("body");
             datateach=remoteMessage.getData().get("teachname");
-            Log.d(TAG, "Message data payloadssssss: " + dataTitle);
+
 
         }
 
@@ -69,16 +69,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
     private void sendNotification(String datacoursename,String databody){
         Intent intent = new Intent(this, SplashActivity.class); //activity to go after clicking it
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //to put splash activity at the top in stack
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent,
-                PendingIntent.FLAG_ONE_SHOT); //pending intent wraps another intent object,
+                PendingIntent.FLAG_ONE_SHOT); //pending intent wraps another intent object, used once
         // then it can be passed to a foriegn app where you grant that app the right to perform the action. here it gets the activity to go to
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.BigTextStyle bigStyle =
                 new NotificationCompat.BigTextStyle();
         bigStyle.bigText(databody);
         bigStyle.setSummaryText("From: "+ datacoursename);
-        Log.d(TAG, "Message data payloadasssssssss: " + databody);
+
         NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
 
                 .setSmallIcon(R.mipmap.ic_launcher) //Notification icon

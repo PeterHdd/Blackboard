@@ -217,7 +217,7 @@ public class StudentSearchActivity extends AppCompatActivity implements Filterab
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for(DataSnapshot data:dataSnapshot.getChildren()){
                                 final String key=data.getKey(); //classid
-                                Log.i("hello","goodbye");  //once
+
                                  refs=FirebaseDatabase.getInstance().getReference();
                                 refs.child("ClassStudent").orderByChild("classid").equalTo(key).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -227,8 +227,7 @@ public class StudentSearchActivity extends AppCompatActivity implements Filterab
                                                 classid = data.child("classid").getValue().toString();
                                                 keyz = data.getKey();
                                                final String currentuser=FirebaseAuth.getInstance().getCurrentUser().getUid();//get classid
-                                                Log.i("clasnae", "123345");
-                                                Log.i("clasnae", keys);
+
                                                 refs.child("ClassStudent").orderByChild("studentid").equalTo(currentuser).addListenerForSingleValueEvent(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -239,7 +238,7 @@ public class StudentSearchActivity extends AppCompatActivity implements Filterab
                                                             Intent intent = new Intent();
                                                             intent.putExtra("value", s.toString());
                                                             setResult(RESULT_OK, intent);
-                                                            Log.d("here", s.toString());
+
                                                             finish();
                                                         }
                                                     }
@@ -256,7 +255,7 @@ public class StudentSearchActivity extends AppCompatActivity implements Filterab
                                             Intent intent = new Intent();
                                             intent.putExtra("value", s.toString());
                                             setResult(RESULT_OK, intent);
-                                            Log.d("here", s.toString());
+
                                             finish();
                                         }
 

@@ -113,7 +113,7 @@ public class StudentLoginActivity extends AppCompatActivity {
                                 return;
                             }
                             else{
-                                Query q=student.orderByChild("email").equalTo(email);
+                                Query q=student.orderByChild("email").equalTo(email); //student node
                                 q.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {

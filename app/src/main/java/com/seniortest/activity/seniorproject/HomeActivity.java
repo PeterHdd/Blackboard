@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public long getItemId(int position) {
-                return super.getItemId(position);
+                return super.getItemId(position); //get the row id
             }
 
             @Override
@@ -188,7 +188,7 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class AViewHolder extends RecyclerView.ViewHolder {
+    public static class AViewHolder extends RecyclerView.ViewHolder {  //static to be able to use it if there is more than one adapter
     View mView;
     TextView titles;
     ImageView imageView;

@@ -262,7 +262,7 @@ public class TeacherNavActivity extends AppCompatActivity{
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                     TeacherNavActivity.this); /*alertdialog.builder class,creates a builder for alert dialog, parameter is context */
 
-            alertDialogBuilder.setView(promptsView); //set the vie object to the alertdialog builder
+            alertDialogBuilder.setView(promptsView); //set the view object to the alertdialog builder
 
             final EditText userInput = (EditText) promptsView
                     .findViewById(R.id.Dialogclass);
@@ -282,7 +282,6 @@ public class TeacherNavActivity extends AppCompatActivity{
                                }
                                 input=userInput.getText().toString();
                                 Log.i("Info",input);//get user input and set it to the result
-                            Log.i("inputsection",section);
                             if(input.contains(" ")){
                                 Toasty.error(TeacherNavActivity.this,"Unable to create, contains white spaces",Toast.LENGTH_SHORT).show();
                                 return;

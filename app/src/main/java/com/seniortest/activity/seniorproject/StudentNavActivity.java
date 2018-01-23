@@ -90,7 +90,7 @@ public class StudentNavActivity extends AppCompatActivity{
         nav = (NavigationView) findViewById(R.id.nav_view); //declare nav bar in java code, created in xml
         image = (CircleImageView) nav.getHeaderView(0).findViewById(R.id.imgnav);
         name1 = (TextView) nav.getHeaderView(0).findViewById(R.id.name);
-        if (getIntent()!=null && getIntent().getExtras() != null) {
+        if (getIntent()!=null && getIntent().getExtras() != null) { //notificiation
                         dataTitle = getIntent().getExtras().getString("title");
                         datamessage = getIntent().getExtras().getString("message");
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -288,7 +288,7 @@ public class StudentNavActivity extends AppCompatActivity{
                 final String returnString = data.getStringExtra("value");
                 returndata.add(returnString);
                 // set text view with string
-                HashSet<String> hashSet = new HashSet<String>();
+                HashSet<String> hashSet = new HashSet<String>(); //to prevent duplication
                 hashSet.addAll(returndata);
                 returndata.clear();
                 returndata.addAll(hashSet);
@@ -306,7 +306,7 @@ public class StudentNavActivity extends AppCompatActivity{
                 views1.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
-                FirebaseMessaging.getInstance().subscribeToTopic(returnString);
+                FirebaseMessaging.getInstance().subscribeToTopic(returnString); //subscribe
                 final DatabaseReference getid=FirebaseDatabase.getInstance().getReference().child("Class");
                ValueEventListener valueEventListener1= new ValueEventListener() {
                    @Override
