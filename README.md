@@ -22,5 +22,9 @@ _Some Activities:_
 
 <img src="http://gdurl.com/jPGc" width="200px"/> <h5> The Admin Activity </h5>
 
+# License
+
+This project is licensed under the GNU General Public [License](https://github.com/PeterHdd/Blackboard/blob/master/LICENSE) - see the LICENSE.md file for details
+
 
 
