@@ -14,13 +14,15 @@ Admin, Class, Teacher, PDF, Student, ClassStudent, Assignment, messages
 
 _Some Activities:_
 
-<img src="http://gdurl.com/7O_m" width="200px"/> <h5>The home activity for the teachers</h5>
+<h5>The home activity for the teachers</h5>
+<img src="https://github.com/PeterHdd/Blackboard/blob/master/teachers.png"/> 
 
-<img src="http://gdurl.com/Zcc8" width="200px"/> <h5> List of students and dialog to send notification</h5>
+<h5> List of students and dialog to send notification</h5>
+<img src="https://github.com/PeterHdd/Blackboard/blob/master/notification.png"/> 
 
-<img src="http://gdurl.com/Xkbb" width="200px"/> <h5> Recieving a template notification from the professor </h5>
+<h5> The Admin Activity </h5>
+<img src="https://github.com/PeterHdd/Blackboard/blob/master/admin.png"/> 
 
-<img src="http://gdurl.com/jPGc" width="200px"/> <h5> The Admin Activity </h5>
 
 # License
 
